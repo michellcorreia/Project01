@@ -46,10 +46,8 @@ public class Result extends Operations{
             }
         }
         
-        this.result = result;
-        System.out.printf("%.2f%n", result);   
-        
-}
+        this.result = result; 
+    }
 
     @Override
     public Double opApply(String variable1, String variable2) {

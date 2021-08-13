@@ -65,8 +65,7 @@ public class Check {
 				result = 0.0;
 				number = "";
 				number = number.concat(input);
-				System.out.println(number);
-				
+				System.out.println(number);	
 			}
 			
 			else if(number == "" && allCheck(input)){
@@ -86,8 +85,7 @@ public class Check {
             }
         
             else if(powerOffCheck(input)) {
-                opCheck = powerOffCheck(input);
-				
+                opCheck = powerOffCheck(input);	
             }
         
             else {							

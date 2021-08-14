@@ -32,12 +32,14 @@ public class Calculator {
             list.add(operation);
             chk.setNumber("");
 
-            // Exibição do resultado / limpeza da lista / O resultado é a nova variável inicial do próximo loop
+            // Exibição do resultado / limpeza da lista / O resultado é a nova variável
+            // inicial do próximo loop
             if (chk.resultCheck(list.get(list.size() - 1).getOperation())) {
 
                 Result res = new Result();
                 res.result(list, result);
-                // O print exibe formato do número baseado na quantidade de casas decimais. (DecimalFormat)
+                // O print exibe formato do número baseado na quantidade de casas decimais.
+                // (DecimalFormat)
                 System.out.println(df.format(res.getResult()));
                 list.clear();
                 result = res.getResult();

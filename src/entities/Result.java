@@ -41,8 +41,7 @@ public class Result extends Operations {
         for (int i = 0; i < list.size(); i++) {
             if (i == 0) {
                 result = Double.valueOf(list.get(i).getVariable());
-            } 
-            else {
+            } else {
                 result = list.get(i - 1).opApply(Double.toString(result), list.get(i).getVariable());
             }
         }

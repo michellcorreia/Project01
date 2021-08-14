@@ -9,7 +9,7 @@ public class Check {
     private Boolean opCheck = false;
     private String op = null;
     private String number = "";
-            
+
     public Check() {
     }
 
@@ -67,9 +67,9 @@ public class Check {
                 System.out.println(number);
             }
 
-            else if (number == "" && allCheck(input)) {
+            else if (number == "" && allCheck(input) && !powerOffCheck(input)) {
                 number = number.concat("0");
-                opCheck = opCheck(input);
+                opCheck = allCheck(input);
                 op = Character.toString(input);
             }
 
@@ -98,8 +98,7 @@ public class Check {
     public Boolean allCheck(char input) {
         if (opCheck(input) || powerOffCheck(input) || resultCheck(input)) {
             return true;
-        } 
-        else {
+        } else {
             return false;
         }
     }
@@ -107,48 +106,42 @@ public class Check {
     public Boolean opCheck(char input) {
         if (Objects.equals(input, "+".charAt(0))) {
             return true;
-        } 
-        else if (Objects.equals(input, "-".charAt(0))) {
+        } else if (Objects.equals(input, "-".charAt(0))) {
             return true;
-        } 
-        else if (Objects.equals(input, "*".charAt(0))) {
+        } else if (Objects.equals(input, "*".charAt(0))) {
             return true;
-        } 
-        else if (Objects.equals(input, "/".charAt(0))) {
+        } else if (Objects.equals(input, "/".charAt(0))) {
             return true;
-        } 
-        else {
+        } else {
             return false;
         }
     }
 
-    public void opToFalse(){
+    public void opToFalse() {
         opCheck = false;
     }
 
     public Boolean resultCheck(char input) {
         if (Objects.equals(input, "=".charAt(0))) {
             return true;
-        } 
-        else {
+        } else {
             return false;
         }
     }
-    //Sobrecarga
-    public Boolean resultCheck(String input){
+
+    // Sobrecarga
+    public Boolean resultCheck(String input) {
         if (Objects.equals(input, "=")) {
             return true;
-        } 
-        else {
+        } else {
             return false;
         }
     }
 
     public Boolean powerOffCheck(char input) {
-        if (Objects.equals(input, "pwr".charAt(0))) {
+        if (Objects.equals(input, "p".charAt(0))) {
             return true;
-        } 
-        else {
+        } else {
             return false;
         }
     }
@@ -156,17 +149,13 @@ public class Check {
     public Operations opInstanceCheck(String operation, String number) {
         if (Objects.equals(operation, "+")) {
             return new Sum(number, operation);
-        } 
-        else if (Objects.equals(operation, "-")) {
+        } else if (Objects.equals(operation, "-")) {
             return new Subtraction(number, operation);
-        } 
-        else if (Objects.equals(operation, "*")) {
+        } else if (Objects.equals(operation, "*")) {
             return new Multiplication(number, operation);
-        } 
-        else if (Objects.equals(operation, "/")) {
+        } else if (Objects.equals(operation, "/")) {
             return new Division(number, operation);
-        } 
-        else { // if(Objects.equals(operation, "="))
+        } else { // if(Objects.equals(operation, "="))
             return new Result(number, operation);
         }
     }

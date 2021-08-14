@@ -1,4 +1,5 @@
 package application;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,44 +9,42 @@ import entities.*;
 
 public class Calculator {
     public static void main(String[] args) {
-		
-		Locale.setDefault(Locale.US);
-		Scanner sc = new Scanner(System.in);
-        DecimalFormat nf = new DecimalFormat("##.#####");
-		List<Operations> list = new ArrayList<>();
-		Check check = new Check();
-		Double result = 0.00;
-     
+
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("##.#####");
+        List<Operations> list = new ArrayList<>();
+        Check chk = new Check();
+        Double result = 0.00;
 
         System.out.println("|| Calculator ||");
         System.out.println();
 
-        while(!check.powerOffCheck(check.getInput())) {
+        while (!chk.powerOffCheck(chk.getInput())) {
 
             // Coleta dos inputs, criação da variável e coleta da operação
-            check.inputCreation(sc, result);
+            chk.inputCreation(sc, result);
 
             // instanciação dinâmica, dependendo da operação
-            Operations operation = check.opInstanceCheck(check.getOp(), check.getNumber());	
-            
-            // implementação da variável e operação na lista, reset do número
-            list.add(operation);					
-            check.setNumber("");
+            Operations operation = chk.opInstanceCheck(chk.getOp(), chk.getNumber());
 
-            // Exibição do resultado / limpeza da lista / O resultado é a nova variável inicial do próximo loop.
-            if(check.resultCheck(list.get(list.size()-1).getOperation())) {
-        
+            // implementação da variável e operação na lista, reset do número
+            list.add(operation);
+            chk.setNumber("");
+
+            // Exibição do resultado / limpeza da lista / O resultado é a nova variável inicial do próximo loop
+            if (chk.resultCheck(list.get(list.size() - 1).getOperation())) {
+
                 Result res = new Result();
                 res.result(list, result);
-                // O print exibe formato do número baseado na quantidade de casas decimais. ("nf")
-                System.out.println(nf.format(res.getResult()));
+                // O print exibe formato do número baseado na quantidade de casas decimais. (DecimalFormat)
+                System.out.println(df.format(res.getResult()));
                 list.clear();
                 result = res.getResult();
-                check.setNumber(Double.toString(result));
-            }    
-        }  
+                chk.setNumber(Double.toString(result));
+            }
+        }
         System.out.println("Turned Off.");
         sc.close();
     }
 }
-

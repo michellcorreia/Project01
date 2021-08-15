@@ -6,7 +6,7 @@ public class Check {
         
     public Check() {
     }
-
+    // Verifivador geral de funcionalidades/operações
     public Boolean allCheck(char input) {
         if (opCheck(input) || powerOffCheck(input) || resultCheck(input)) {
             return true;
@@ -14,7 +14,7 @@ public class Check {
             return false;
         }
     }
-
+    // Verificador de operações
     public Boolean opCheck(char input) {
         if (Objects.equals(input, "+".charAt(0))) {
             return true;
@@ -28,7 +28,7 @@ public class Check {
             return false;
         }
     }
-
+    // Verifica se o input foi solicitando o resultado ("=")
     public Boolean resultCheck(char input) {
         if (Objects.equals(input, "=".charAt(0))) {
             return true;
@@ -45,7 +45,7 @@ public class Check {
             return false;
         }
     }
-
+    // Verifica se o input foi solicitando o desligamento ("p")
     public Boolean powerOffCheck(char input) {
         if (Objects.equals(input, "p".charAt(0))) {
             return true;
@@ -53,7 +53,7 @@ public class Check {
             return false;
         }
     }
-
+    // Método responsável por devolver a instanciação dinâmica, baseado na operação colhida.
     public Operations opInstanceCheck(String operation, String number) {
         if (Objects.equals(operation, "+")) {
             return new Sum(number, operation);

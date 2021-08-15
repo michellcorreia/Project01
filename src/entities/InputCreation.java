@@ -53,41 +53,41 @@ public class InputCreation {
         this.number = number;
     }
 
+    // Método de criação/formulação do input
     public void inputCreation(Scanner sc, Double result) {
-
+        // Evita exibit "0" na tela após uma coleta de resultado.
         if (result == 0) {
             System.out.println("0");
         }
+        // Enquanto opCheck for falso, continue coletando o input.
         while (!opCheck) {
             input = sc.next().charAt(0);
 
+            // depois de ter o result, checa o primeiro input
             if (result != 0 && !chk.allCheck(input)) {
                 result = 0.0;
-                number = "";
+                setNumber("");
                 number = number.concat(Character.toString(input));
                 System.out.println(number);
             }
-
+            // Se number "" & input operacional (exceto powerOff): primeira variavel "0",
             else if (number == "" && chk.allCheck(input) && !chk.powerOffCheck(input)) {
                 number = number.concat("0");
                 opCheck = chk.allCheck(input);
                 op = Character.toString(input);
             }
-
-            else if (chk.opCheck(input)) {
-                opCheck = chk.opCheck(input);
-                op = Character.toString(input);
+            // Se input operacional, condiciona oopCheck a sair do while
+            else if (chk.allCheck(input)) {
+                opCheck = chk.allCheck(input);
+                // Se o input for "p", não faz mais nada.
+                if (chk.powerOffCheck(input)) {
+                }
+                // Caso contrário, coleta a operação inputada.
+                else {
+                    op = Character.toString(input);
+                }
             }
-
-            else if (chk.resultCheck(input)) {
-                opCheck = chk.resultCheck(input);
-                op = Character.toString(input);
-            }
-
-            else if (chk.powerOffCheck(input)) {
-                opCheck = chk.powerOffCheck(input);
-            }
-
+            // (variável é pontuação ou numérica) concatena com number
             else {
                 number = number.concat(Character.toString(input));
                 System.out.println(number);

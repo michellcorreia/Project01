@@ -6,7 +6,7 @@ public class Check {
         
     public Check() {
     }
-    // Verifivador geral de funcionalidades/operações
+    // Verificador geral de funcionalidades/operações
     public Boolean allCheck(char input) {
         if (opCheck(input) || powerOffCheck(input) || resultCheck(input)) {
             return true;

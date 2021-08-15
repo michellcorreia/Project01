@@ -55,7 +55,7 @@ public class InputCreation {
 
     // Método de criação/formulação do input
     public void inputCreation(Scanner sc, Double result) {
-        // Evita exibit "0" na tela após uma coleta de resultado.
+        // Evita exibir "0" na tela após uma coleta de resultado.
         if (result == 0) {
             System.out.println("0");
         }

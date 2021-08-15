@@ -32,8 +32,7 @@ public class Result extends Operations {
         // Precedência das operações
         for (int i = 0; i < list.size(); i++) {
             if (Objects.equals(list.get(i).getOperation(), "*") || Objects.equals(list.get(i).getOperation(), "/")) {
-                list.get(i + 1).setVariable(
-                        Double.toString(list.get(i).opApply(list.get(i).getVariable(), list.get(i + 1).getVariable())));
+                list.get(i + 1).setVariable(Double.toString(list.get(i).opApply(list.get(i).getVariable(), list.get(i + 1).getVariable())));
                 list.remove(i);
             }
         }
@@ -41,7 +40,8 @@ public class Result extends Operations {
         for (int i = 0; i < list.size(); i++) {
             if (i == 0) {
                 result = Double.valueOf(list.get(i).getVariable());
-            } else {
+            }
+            else {
                 result = list.get(i - 1).opApply(Double.toString(result), list.get(i).getVariable());
             }
         }

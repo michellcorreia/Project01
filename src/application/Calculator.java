@@ -14,23 +14,24 @@ public class Calculator {
         Scanner sc = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat("##.#####");
         List<Operations> list = new ArrayList<>();
+        InputCreation ic = new InputCreation();
         Check chk = new Check();
         Double result = 0.00;
 
         System.out.println("|| Calculator ||");
         System.out.println();
 
-        while (!chk.powerOffCheck(chk.getInput())) {
+        while (!chk.powerOffCheck(ic.getInput())) {
 
             // Coleta dos inputs, criação da variável e coleta da operação
-            chk.inputCreation(sc, result);
+            ic.inputCreation(sc, result);
 
             // instanciação dinâmica, dependendo da operação
-            Operations operation = chk.opInstanceCheck(chk.getOp(), chk.getNumber());
+            Operations operation = chk.opInstanceCheck(ic.getOp(), ic.getNumber());
 
             // implementação da variável e operação na lista, reset do número
             list.add(operation);
-            chk.setNumber("");
+            ic.setNumber("");
 
             // Exibição do resultado / limpeza da lista / O resultado é a nova variável
             // inicial do próximo loop
@@ -43,7 +44,7 @@ public class Calculator {
                 System.out.println(df.format(res.getResult()));
                 list.clear();
                 result = res.getResult();
-                chk.setNumber(Double.toString(result));
+                ic.setNumber(Double.toString(result));
             }
         }
         System.out.println("Turned Off.");
